@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f6f9;
+      color: #333;
+    }
+
+    header {
+      background: #2c3e50;
+      color: white;
+      padding: 30px;
+      text-align: center;
+      animation: fadeIn 1s ease-in;
+    }
+
+    section {
+      margin: 20px;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      animation: fadeUp 0.8s ease;
+    }
+
+    h2 {
+      border-bottom: 2px solid #2c3e50;
+      padding-bottom: 5px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+    }
+
+    .card {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .social a {
+      font-size: 24px;
+      margin: 10px;
+      color: #2c3e50;
+      transition: 0.3s;
+    }
+
+    .social a:hover {
+      color: #007bff;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #2c3e50;
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+
+    @keyframes fadeUp {
+      from {transform: translateY(20px); opacity: 0;}
+      to {transform: translateY(0); opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 contenteditable="true">Your Name</h1>
+  <p contenteditable="true">Your short objective here...</p>
+</header>
+
+<section>
+  <h2>Skills</h2>
+  <p contenteditable="true">MS Word, MS Excel, PowerPoint</p>
+</section>
+
+<section>
+  <h2>Academic</h2>
+  <p contenteditable="true">JSC: School / GPA / Year</p>
+  <p contenteditable="true">SSC: School / GPA / Year</p>
+</section>
+
+<section>
+  <h2>Certificates (Upload & Preview)</h2>
+  <input type="file" id="upload" multiple accept="image/*">
+  <div class="grid" id="preview"></div>
+</section>
+
+<section>
+  <h2>Social Media</h2>
+  <div class="social">
+    <a href="https://facebook.com/yourprofile" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://linkedin.com/in/yourprofile" target="_blank"><i class="fab fa-linkedin"></i></a>
+  </div>
+</section>
+
+<section>
+  <h2>Contact</h2>
+  <p contenteditable="true">Phone: 01XXXXXXXXX</p>
+  <p contenteditable="true">Email: your@email.com</p>
+</section>
+
+<footer>
+  <p>© 2026 Your Name</p>
+</footer>
+
+<script>
+  const upload = document.getElementById('upload');
+  const preview = document.getElementById('preview');
+
+  upload.addEventListener('change', function() {
+    preview.innerHTML = '';
+    Array.from(upload.files).forEach(file => {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const div = document.createElement('div');
+        div.classList.add('card');
+        div.innerHTML = `<img src="${e.target.result}">`;
+        preview.appendChild(div);
+      }
+      reader.readAsDataURL(file);
+    });
+  });
+</script>
+
+</body>
+</html>
